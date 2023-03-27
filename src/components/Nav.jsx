@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Nav = ({ search, setSearch }) => {
   return (
@@ -13,18 +12,18 @@ const Nav = ({ search, setSearch }) => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search Posts"
         />
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/post">Post</Link>
-          </li>
-        </ul>
       </form>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/post">Post</Link>
+        </li>
+      </ul>
     </nav>
   );
 };
