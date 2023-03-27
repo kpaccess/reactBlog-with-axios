@@ -1,6 +1,7 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
+import Api from './api/posts';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -40,13 +41,26 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const filteredResults = posts.filter(
+    const filteredResults = posts?.filter(
       (post) =>
-        post.body.toLowerCase().includes(search.toLowerCase()) ||
-        post.title.toLowerCase().includes(search.toLowerCase())
+        post?.body.toLowerCase().includes(search.toLowerCase()) ||
+        post?.title.toLowerCase().includes(search.toLowerCase())
     );
-    setSearchResults(filteredResults);
+    setSearchResults(filteredResults.reverse());
   }, [posts, search]);
+
+  useEffect(() => {
+    try {
+      const getData = async () => {
+        const response = await Api.get('/posts');
+        console.log(response.data);
+        // setPosts(response.data);
+      };
+      getData();
+    } catch (e) {
+      console.log(`Error: ${e.message}`);
+    }
+  }, []);
 
   const handleDelete = (id) => {
     const postsList = posts.filter((post) => post.id !== id);
@@ -54,17 +68,17 @@ const App = () => {
     navigate('/');
   };
 
-  const handleSubmit = (id) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const newId = posts ? [posts.length - 1].id + 1 : 1;
+    const id = posts.length ? [posts.length - 1].id + 1 : 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = {
-      newId,
+      id,
       title: postTitle,
       body: postBody,
       datetime,
     };
-    const allPosts = [...postItems, newPost];
+    const allPosts = [...posts, newPost];
     setPosts(allPosts);
     setPostBody('');
     setPostTitle('');
