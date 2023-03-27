@@ -213,7 +213,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.PostPage button {
+/* .PostPage button {
   height: 48px;
   min-width: 48px;
   border-radius: 0.25rem;
@@ -222,6 +222,26 @@ body {
   background-color: red;
   color: #fff;
   cursor: pointer;
+} */
+
+.PostPage button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.PostPage .deleteButton {
+  background-color: red;
+  cursor: pointer;
+}
+
+.PostPage .editButton {
+  margin-right: 0.5rem;
+  background-color: green;
 }
 
 .statusMsg {
