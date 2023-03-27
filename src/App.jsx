@@ -5,7 +5,6 @@ import { format } from 'date-fns';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Post from './components/NewPost';
 import About from './components/About';
 import PostPage from './components/PostPage';
 import Missing from './components/Missing';
