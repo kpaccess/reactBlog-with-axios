@@ -7,7 +7,7 @@ const Nav = ({ search, setSearch }) => {
         <label htmlFor="search">Search Posts</label>
         <input
           id="search"
-          type="search"
+          type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search Posts"
