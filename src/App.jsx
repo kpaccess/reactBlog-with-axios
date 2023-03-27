@@ -1,5 +1,6 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -39,6 +40,15 @@ const App = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const filteredResults = posts.filter(
+      (post) =>
+        post.body.toLowerCase().includes(search.toLowerCase()) ||
+        post.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setSearchResults(filteredResults);
+  }, [posts, search]);
+
   const handleDelete = (id) => {
     const postsList = posts.filter((post) => post.id !== id);
     setPosts(postsList);
@@ -47,7 +57,19 @@ const App = () => {
 
   const handleSubmit = (id) => {
     e.preventDefault();
-    console.log(' id ', id);
+    const newId = posts ? [posts.length - 1].id + 1 : 1;
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    const newPost = {
+      newId,
+      title: postTitle,
+      body: postBody,
+      datetime,
+    };
+    const allPosts = [...postItems, newPost];
+    setPosts(allPosts);
+    setPostBody('');
+    setPostTitle('');
+    navigate('/');
   };
 
   return (
@@ -55,7 +77,7 @@ const App = () => {
       <Header title="React JS Blog" />
       <Nav search={search} setSearch={setSearch} />
       <Routes>
-        <Route path="/" element={<Home posts={posts} />} />
+        <Route path="/" element={<Home posts={searchResults} />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/post"
