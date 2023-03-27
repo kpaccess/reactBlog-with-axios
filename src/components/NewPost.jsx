@@ -19,7 +19,6 @@ const NewPost = ({
         />
         <label htmlFor="postbody">Post:</label>
         <textarea
-          name=""
           id="postbody"
           required
           value={postBody}

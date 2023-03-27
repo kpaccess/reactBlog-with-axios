@@ -1,8 +1,4 @@
-import {
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import Header from './components/Header';
@@ -37,49 +33,45 @@ const App = () => {
     },
   ]);
   const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] =
-    useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState();
 
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
-    const postsList = posts.filter(
-      (post) => post.id !== id
-    );
+    const postsList = posts.filter((post) => post.id !== id);
     setPosts(postsList);
     navigate('/');
+  };
+
+  const handleSubmit = (id) => {
+    e.preventDefault();
+    console.log(' id ', id);
   };
 
   return (
     <div className="App">
       <Header title="React JS Blog" />
-      <Nav
-        search={search}
-        setSearch={setSearch}
-      />
+      <Nav search={search} setSearch={setSearch} />
       <Routes>
-        <Route
-          path="/"
-          element={<Home posts={posts} />}
-        />
-        <Route
-          path="/about"
-          element={<About />}
-        />
+        <Route path="/" element={<Home posts={posts} />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/post"
-          element={<NewPost />}
+          element={
+            <NewPost
+              postTitle={postTitle}
+              postBody={postBody}
+              setPostBody={setPostBody}
+              setPostTitle={setPostTitle}
+              handleSubmit={handleSubmit}
+            />
+          }
         />
         <Route
           path="/post/:id"
-          element={
-            <PostPage
-              posts={posts}
-              handleDelete={handleDelete}
-            />
-          }
+          element={<PostPage posts={posts} handleDelete={handleDelete} />}
         />
         <Route path="*" element={<Missing />} />
       </Routes>
