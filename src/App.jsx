@@ -1,7 +1,7 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import Api from './api/posts';
+import api from './api/posts';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -13,26 +13,7 @@ import Footer from './components/Footer';
 import NewPost from './components/NewPost';
 
 const App = () => {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: 'My First Post',
-      datetime: 'July 01, 2021 11:17:36 AM',
-      body: 'Lorem ipsum dolor sit amet, consectetur',
-    },
-    {
-      id: 2,
-      title: 'My Second Post',
-      datetime: 'July 01, 2021 11:17:36 AM',
-      body: 'Lorem ipsum dolor sit amet, consectetur',
-    },
-    {
-      id: 3,
-      title: 'My Third Post',
-      datetime: 'July 01, 2021 11:17:36 AM',
-      body: 'Lorem ipsum dolor sit amet, consectetur',
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState('');
@@ -43,23 +24,31 @@ const App = () => {
   useEffect(() => {
     const filteredResults = posts?.filter(
       (post) =>
-        post?.body.toLowerCase().includes(search.toLowerCase()) ||
-        post?.title.toLowerCase().includes(search.toLowerCase())
+        post?.body?.toLowerCase().includes(search.toLowerCase()) ||
+        post?.title?.toLowerCase().includes(search.toLowerCase())
     );
     setSearchResults(filteredResults.reverse());
   }, [posts, search]);
 
   useEffect(() => {
-    try {
-      const getData = async () => {
-        const response = await Api.get('/posts');
-        console.log(response.data);
-        // setPosts(response.data);
-      };
-      getData();
-    } catch (e) {
-      console.log(`Error: ${e.message}`);
-    }
+    const fetchPosts = async () => {
+      try {
+        const response = await api.get('/posts');
+
+        setPosts(response.data);
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   const handleDelete = (id) => {
@@ -68,7 +57,7 @@ const App = () => {
     navigate('/');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? [posts.length - 1].id + 1 : 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
@@ -78,11 +67,16 @@ const App = () => {
       body: postBody,
       datetime,
     };
-    const allPosts = [...posts, newPost];
-    setPosts(allPosts);
-    setPostBody('');
-    setPostTitle('');
-    navigate('/');
+    try {
+      const response = await api.post('/posts', newPost);
+      const allPosts = [...posts, response.data];
+      setPosts(allPosts);
+      setPostBody('');
+      setPostTitle('');
+      navigate('/');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   };
 
   return (
