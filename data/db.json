@@ -7,27 +7,16 @@
       "body": "Lorem ipsum dolor sit amet, consectetur"
     },
     {
-      "id": 2,
-      "title": "My Second Post",
-      "datetime": "July 01, 2021 11:17:36 AM",
-      "body": "Lorem ipsum dolor sit amet, consectetur"
-    },
-    {
       "id": 3,
-      "title": "My Third Post",
-      "datetime": "July 01, 2021 11:17:36 AM",
-      "body": "Lorem ipsum dolor sit amet, consectetur"
+      "title": "test post",
+      "body": "test post",
+      "datetime": "March 27, 2023 6:58:27 PM"
     },
     {
       "id": 4,
-      "title": "",
-      "datetime": "March 27, 2023 3:10:03 PM"
-    },
-    {
-      "id": 6,
-      "title": "sss",
-      "body": "sss",
-      "datetime": "March 27, 2023 6:27:18 PM"
+      "title": "updated 1237",
+      "body": "My 3rd Post1237",
+      "datetime": "March 27, 2023 7:40:16 PM"
     }
   ]
 }

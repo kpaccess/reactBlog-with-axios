@@ -130,7 +130,8 @@ body {
 .NewPost,
 .PostPage,
 .About,
-.Missing {
+.Missing,
+.EditPost {
   width: 100%;
   flex-grow: 1;
   padding: 1rem;

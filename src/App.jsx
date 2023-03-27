@@ -11,6 +11,7 @@ import PostPage from './components/PostPage';
 import Missing from './components/Missing';
 import Footer from './components/Footer';
 import NewPost from './components/NewPost';
+import EditPost from './components/EditPost';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -18,6 +19,8 @@ const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState();
+  const [editTitle, setEditTitle] = useState('');
+  const [editBody, setEditBody] = useState();
 
   const navigate = useNavigate();
 
@@ -84,6 +87,29 @@ const App = () => {
     }
   };
 
+  const handleEdit = async (id) => {
+    try {
+      const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+      const updatedPost = {
+        id,
+        title: editTitle,
+        body: editBody,
+        datetime,
+      };
+
+      const response = await api.put(`/posts/${id}`, updatedPost);
+
+      setPosts(
+        posts.map((post) => (post.id === id ? { ...response.data } : post))
+      );
+      setEditBody('');
+      setEditTitle('');
+      navigate('/');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
   return (
     <div className="App">
       <Header title="React JS Blog" />
@@ -103,6 +129,21 @@ const App = () => {
             />
           }
         />
+
+        <Route
+          path="/edit/:id"
+          element={
+            <EditPost
+              posts={posts}
+              editTitle={editTitle}
+              editBody={editBody}
+              setEditBody={setEditBody}
+              setEditTitle={setEditTitle}
+              handleEdit={handleEdit}
+            />
+          }
+        />
+
         <Route
           path="/post/:id"
           element={<PostPage posts={posts} handleDelete={handleDelete} />}
