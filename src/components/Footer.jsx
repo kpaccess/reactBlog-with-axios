@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 
-const Footer = () => {
-  const today = new Date();
+const Footer = ({ length }) => {
   return (
     <footer className="Footer">
-      <p>Copyright &copy; {today.getFullYear()}</p>
+      <p>
+        {length} {length > 1 ? 'items' : 'item'}{' '}
+      </p>
     </footer>
   );
 };

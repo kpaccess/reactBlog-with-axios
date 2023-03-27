@@ -110,7 +110,7 @@ const App = () => {
         />
         <Route path="*" element={<Missing />} />
       </Routes>
-      <Footer />
+      <Footer length={posts.length} />
     </div>
   );
 };
