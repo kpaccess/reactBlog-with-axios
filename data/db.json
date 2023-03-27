@@ -24,34 +24,10 @@
       "datetime": "March 27, 2023 3:10:03 PM"
     },
     {
-      "id": 5,
-      "title": "5th post",
-      "body": "This is my fifth post",
-      "datetime": "March 27, 2023 6:25:10 PM"
-    },
-    {
       "id": 6,
       "title": "sss",
       "body": "sss",
       "datetime": "March 27, 2023 6:27:18 PM"
-    },
-    {
-      "id": 7,
-      "title": "6th post",
-      "body": "This is my 6th post",
-      "datetime": "March 27, 2023 6:27:46 PM"
-    },
-    {
-      "id": 8,
-      "title": "7th post",
-      "body": "This is my 7th post",
-      "datetime": "March 27, 2023 6:29:03 PM"
-    },
-    {
-      "id": 9,
-      "title": "kkp",
-      "body": "kkp123",
-      "datetime": "March 27, 2023 6:30:57 PM"
     }
   ]
 }
