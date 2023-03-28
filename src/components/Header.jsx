@@ -1,6 +1,5 @@
-import { useContext } from 'react';
-
 import { FaLaptop, FaTabletAlt, FaMobileAlt } from 'react-icons/fa';
+import { useContext } from 'react';
 
 import DataContext from '../context/DataContext';
 

@@ -108,18 +108,9 @@ const App = () => {
     <div className="App">
       <DataProvider>
         <Header title="React JS Blog" />
-        <Nav search={search} setSearch={setSearch} />
+        <Nav />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                posts={searchResults}
-                fetchError={fetchError}
-                isLoading={isLoading}
-              />
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route
             path="/post"
