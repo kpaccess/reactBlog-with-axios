@@ -11,24 +11,6 @@
       "title": "test post",
       "body": "test post",
       "datetime": "March 27, 2023 6:58:27 PM"
-    },
-    {
-      "id": 4,
-      "title": "updated 1237",
-      "body": "My 3rd Post1237",
-      "datetime": "March 27, 2023 7:40:16 PM"
-    },
-    {
-      "id": 5,
-      "title": "New pos 123t",
-      "body": "another post333",
-      "datetime": "March 27, 2023 7:44:39 PM"
-    },
-    {
-      "id": 6,
-      "title": "test post123",
-      "body": "ssssss",
-      "datetime": "March 28, 2023 12:12:12 PM"
     }
   ]
 }
