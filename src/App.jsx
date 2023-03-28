@@ -112,18 +112,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route
-            path="/post"
-            element={
-              <NewPost
-                postTitle={postTitle}
-                postBody={postBody}
-                setPostBody={setPostBody}
-                setPostTitle={setPostTitle}
-                handleSubmit={handleSubmit}
-              />
-            }
-          />
+          <Route path="/post" element={<NewPost />} />
 
           <Route
             path="/edit/:id"
