@@ -232,16 +232,15 @@ body {
   font-size: 1rem;
   color: #fff;
   cursor: pointer;
+  margin-right: 0.5rem;
 }
 
 .PostPage .deleteButton {
   background-color: red;
-  cursor: pointer;
 }
 
 .PostPage .editButton {
-  margin-right: 0.5rem;
-  background-color: green;
+  background-color: #333;
 }
 
 .statusMsg {
