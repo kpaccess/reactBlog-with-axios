@@ -7,22 +7,16 @@
       "body": "Lorem ipsum dolor sit amet, consectetur"
     },
     {
+      "id": 2,
+      "title": "New Post 1",
+      "body": "new post 1",
+      "datetime": "March 28, 2023 1:32:13 PM"
+    },
+    {
       "id": 3,
-      "title": "test post",
-      "body": "test post",
-      "datetime": "March 27, 2023 6:58:27 PM"
-    },
-    {
-      "id": 4,
-      "title": "ddd",
-      "body": "ddd",
-      "datetime": "March 28, 2023 1:20:05 PM"
-    },
-    {
-      "id": 5,
-      "title": "www",
-      "body": "ssss",
-      "datetime": "March 28, 2023 1:21:31 PM"
+      "title": "New Post 2",
+      "body": "New post 2",
+      "datetime": "March 28, 2023 1:32:26 PM"
     }
   ]
 }

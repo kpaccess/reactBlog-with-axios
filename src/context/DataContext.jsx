@@ -36,39 +36,6 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {}, []);
 
-  const handleDelete = async (id) => {
-    try {
-      await api.delete(`/posts/${id}`);
-      const postsList = posts.filter((post) => post.id !== id);
-      setPosts(postsList);
-      navigate('/');
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = posts.length ? [posts.length - 1].id + 1 : 1;
-    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-    const newPost = {
-      id,
-      title: postTitle,
-      body: postBody,
-      datetime,
-    };
-    try {
-      const response = await api.post('/posts', newPost);
-      const allPosts = [...posts, response.data];
-      setPosts(allPosts);
-      setPostBody('');
-      setPostTitle('');
-      navigate('/');
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  };
-
   const handleEdit = async (id) => {
     try {
       const datetime = format(new Date(), 'MMMM dd, yyyy pp');
@@ -107,7 +74,6 @@ export const DataProvider = ({ children }) => {
         setEditBody,
         setEditTitle,
         handleEdit,
-        handleDelete,
       }}
     >
       {children}
