@@ -2,21 +2,9 @@
   "posts": [
     {
       "id": 1,
-      "title": "My First Post",
-      "datetime": "July 01, 2021 11:17:36 AM",
-      "body": "Lorem ipsum dolor sit amet, consectetur"
-    },
-    {
-      "id": 2,
-      "title": "New Post 1",
-      "body": "new post 1",
-      "datetime": "March 28, 2023 1:32:13 PM"
-    },
-    {
-      "id": 3,
-      "title": "New Post 2",
-      "body": "New post 2",
-      "datetime": "March 28, 2023 1:32:26 PM"
+      "title": "My First Post 123",
+      "body": "Lorem ipsum dolor sit amet, consectetur 123",
+      "datetime": "March 28, 2023 1:38:50 PM"
     }
   ]
 }
